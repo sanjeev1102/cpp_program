@@ -1,0 +1,84 @@
+
+Lvalues and Rvalues (C++):
+
+Every C++ expression has a type, and belongs to a value category. The value categories are the basis for rules that compilers must follow when creating, copying, and moving temporary objects during expression evaluation.
+
+-----------------------
+An lvalue has an address that your program can access. Examples of lvalue expressions include variable names, including const variables, array elements, function calls that return an lvalue reference, bit-fields, unions, and class members.
+
+or we can say : An object that ocupies some identifiable location in memory. is called l value.
+
+Examples of lvalue:
+int i;     // i is lvalue
+int* p = &i;  // i's address is identifiable
+i=2;             // Memory content is modifies
+
+class dog;
+dog d1;     // lvalue of user defined type (class)
+
+note: most of the variable in c++ code are lvalues.
+-----------------------------
+
+Rvalues : Any objects which is not lvalue is rvalue.
+
+rvalue examples:
+int x = 2;  // 2 is an rvalue      // here x is an lvalue.
+int x = i+2;   // (i+2) is an rvalue.   why? see next line
+int *p = &(i+2)  // its an error,   because we can not get address of (i+2)
+2 = i; // Error
+
+dog d1;
+d1 = dog();  // dof() is rvalue of user defined type (class)
+
+-----------------------------------------
+
+// Reference ( or lvalue reference)
+
+int i;
+int& r =i;                  // r is reference to lvalue i;
+
+int& r = 5; // error
+
+// Exception: Constant lvalue reference can be assign a rvalue;
+const int& r = 5;  //
+
+// lvalue can be used to create an rvalue
+
+int i = 1;
+int x = i+2;
+
+int x = i;   // here i implicitly changed to r value  however rvalue can not be implicitly transformed to lvalue, rvalue should be explicitly used to create to lvalue.
+
+
+example:  rvalue used to create lvalue explicitly.
+int v[3];
+*(v+2) = 4;
+
+---------------------
+summary..
+1. Everyc++ expression yield either an lvalue or a rvalue.
+2. If the expression has an identifiable memory address , it's lvalue; otherwise , rvalue.
+----------------------
+
+
+lvalue reference and rvalue reference..
+
+lvalue reference is simply known as reference in c++ earlier to c++ 11. but from c++11 now there is introduction of rvalue reference as well and hence now reference is categorised in two part i.e lvalue reference and rvalue reference.
+
+example:
+int a = 5;
+int& b = a;  // this is now called lvalue reference ( reference in normal case.) 
+int&& c       // c is rvalue reference (introduced in c++11 onwards.)
+
+===================================
+C++ 11 Move Semantics and rvalue reference:
+
+Description
+Move Semantics in C++ are a valuable addition to the language after C++ 11 standard. It helps in avoiding unnecessary copies created due to temporary objects.
+
+
+
+
+
+
+

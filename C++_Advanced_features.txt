@@ -1,0 +1,119 @@
+
+
+1. Initializer_list
+C++11 has introduced new way of initializing vector as below (like array)
+
+vector<int> v = {2,4,6,8};   // calling initializer_list constructor.
+
+
+80  deprt..
+
+22
+
+
+==================
+* Type deduction and inference:
+Definition of deduce ->  arrive at (a fact or a conclusion) by reasoning or Deduce definition: If you deduce something or deduce that something is true , you reach that conclusion.... hence here auto keyword specifies that type of the variable will be concluded by the compiler.
+
+Type deduction and inference:
+
+The auto keyword specifies that the type of the variable will be deduced by the compiler.
+
+* C++ also introduced ney type of keyword "decltype"
+decltype Keyword : It inspects the declared type of an entity or the type of an expression. 
+Auto lets you declare a variable with particular type whereas decltype lets you extract the type from the variable so decltype is sort of an operator that evaluates the type of passed expression.
+
+* C++ LValue and RValue : definition
+-> Every C++ expression yield either an rvalue or lvalue.
+-> If an expression has an identifiable memory address , it's lvalue otherwise it's rvalue.
+
+
+* std::move : 
+
+Eg: in our code
+CWiFiPresCtrlSetWiFiStatus(WiFiPresTypes::eRole role, bool state, uint32_t channel, WiFiManagerStub::setWiFiStatusReply_t reply)
+		: CWiFiPresCtrlCommands(HANDLER_WIFI, REQ_SETWIFISTATUS, (char*) "SetWiFiStatus", std::move(reply))
+	{
+	
+	}
+std::move is used to indicate that an object reply may be "moved from", i.e. allowing the efficient transfer of resources from reply to another object.
+In particular, std::move produces an xvalue expression that identifies its argument reply. It is exactly equivalent to a static_cast to an rvalue reference type.
+
+
+Parameters
+reply	-	the object to be moved
+Return value
+static_cast<typename std::remove_reference<T>::type&&>(reply)
+
+
+
+
+final keyword c++11:
+Use of final specifier in C++ 11:
+Sometimes you don’t want to allow derived class to override the base class’ virtual function. C++ 11 allows built-in facility to prevent overriding of virtual function using final specifier.
+Consider the following example which shows use of final specifier. This program fails in compilation.
+
+#include <iostream> 
+using namespace std; 
+class Base 
+{ 
+public: 
+    virtual void myfun() final 
+    { cout << "myfun() in Base";   } 
+}; 
+class Derived : public Base 
+{ 
+    void myfun() { cout << "myfun() in Derived\n"; } 
+}; 
+int main() 
+{ 
+    Derived d; 
+    Base &b = d; 
+    b.myfun(); 
+    return 0; 
+} 
+----------------
+output:
+prog.cpp:14:10: error: virtual function ‘virtual void Derived::myfun()’
+     void myfun()
+          ^
+prog.cpp:7:18: error: overriding final function ‘virtual void Base::myfun()’
+     virtual void myfun() final 
+	 
+=======================
+2nd use of final specifier:
+final specifier in C++ 11 can also be used to prevent inheritance of class / struct. If a class or struct is marked as final then it becomes non inheritable and it cannot be used as base class/struct.
+The following program shows use of final specifier to make class non inheritable:
+
+#include <iostream> 
+class Base final 
+{ }; 
+class Derived : public Base 
+{ }; 
+int main() 
+{ 
+    Derived d; 
+    return 0; 
+} 
+----------------
+output:
+error: cannot derive from ‘final’ base ‘Base’ in derived type ‘Derived’
+ class Derived : public Base
+
+==================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+Thinking in c++ tutorial PDF
+
+The hidden implementation
+It is helpful to break up the playing field into class creators (those
+who create new data types) and client programmers4 (the class
+consumers who use the data types in their applications). The goal of
+the client programmer is to collect a toolbox full of classes to use for
+rapid application development. The goal of the class creator is to
+build a class that exposes only what’s necessary to the client
+programmer and keeps everything else hidden. Why? Because if it’s
+hidden, the client programmer can’t use it, which means that the
+class creator can change the hidden portion at will without worrying
+about the impact to anyone else. The hidden portions usually
+represent the tender insides of an object that could easily be
+corrupted by a careless or uninformed client programmer, so hiding
+the implementation reduces program bugs. The concept of
+implementation hiding cannot be overemphasized.
+
+
+
+
