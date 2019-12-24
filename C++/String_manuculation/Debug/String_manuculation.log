@@ -1,0 +1,6 @@
+﻿  String_compression.cpp
+D:\sanjeev\C++Progm\C++\String_manuculation\String_compression.cpp(40,8): error C4430:  missing type specifier - int assumed. Note: C++ does not support default-int
+D:\sanjeev\C++Progm\C++\String_manuculation\String_compression.cpp(41,2): error C3861:  'fork': identifier not found
+D:\sanjeev\C++Progm\C++\String_manuculation\String_compression.cpp(42,6): error C3861:  'fork': identifier not found
+D:\sanjeev\C++Progm\C++\String_manuculation\String_compression.cpp(42,16): error C3861:  'fork': identifier not found
+D:\sanjeev\C++Progm\C++\String_manuculation\String_compression.cpp(44,3): error C3861:  'fork': identifier not found
